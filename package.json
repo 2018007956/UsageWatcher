@@ -1,0 +1,52 @@
+{
+  "name": "usagewatcher",
+  "displayName": "UsageWatcher - Cursor Usage Statusline",
+  "description": "Claude-Code style statusline showing real-time Cursor usage metrics",
+  "version": "0.2.0",
+  "publisher": "usagewatcher",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "UsageWatcher - Cursor Usage Statusline",
+      "properties": {
+        "cursorStatusline.refreshInterval": {
+          "type": "number",
+          "default": 60,
+          "minimum": 10,
+          "description": "API polling interval in seconds"
+        },
+        "cursorStatusline.monthlyBudget": {
+          "type": "number",
+          "default": 500,
+          "description": "Monthly usage budget in USD for progress bar calculation"
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "cursorStatusline.refresh",
+        "title": "UsageWatcher: Refresh Usage Data"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.3"
+  }
+}
