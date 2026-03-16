@@ -5,29 +5,6 @@ const BAR_LENGTH = 10;
 const FILLED = '🟩';
 const EMPTY = '⬛';
 
-enum Severity {
-  Normal,
-  Warning,
-  Critical,
-}
-
-function severity(percent: number): Severity {
-  if (percent >= 80) { return Severity.Critical; }
-  if (percent >= 60) { return Severity.Warning; }
-  return Severity.Normal;
-}
-
-function severityColor(s: Severity): vscode.ThemeColor {
-  switch (s) {
-    case Severity.Critical:
-      return new vscode.ThemeColor('statusBarItem.errorBackground');
-    case Severity.Warning:
-      return new vscode.ThemeColor('statusBarItem.warningBackground');
-    default:
-      return new vscode.ThemeColor('statusBar.background');
-  }
-}
-
 export class Statusline implements vscode.Disposable {
   private usageItem: vscode.StatusBarItem;
   private costItem: vscode.StatusBarItem;
@@ -46,9 +23,6 @@ export class Statusline implements vscode.Disposable {
 
   updateUsage(data: UsageData): void {
     this.errorItem.hide();
-
-    const sev = severity(data.usagePercent);
-    const color = severityColor(sev);
 
     // Progress bar
     const clamped = Math.max(0, Math.min(100, data.usagePercent));
@@ -69,7 +43,7 @@ export class Statusline implements vscode.Disposable {
 
     this.usageItem.text = `${FILLED.repeat(filled)}${EMPTY.repeat(empty)} ${pct}%`;
     this.usageItem.tooltip = usageTooltip;
-    this.usageItem.backgroundColor = sev !== Severity.Normal ? color : undefined;
+    this.usageItem.backgroundColor = undefined;
     this.usageItem.show();
 
     // Cost

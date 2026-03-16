@@ -49,7 +49,7 @@ Add these values to `settings.json` if you want to customize behavior:
 | Setting | Default | Description |
 |---|---|---|
 | `cursorStatusline.refreshInterval` | `60` | Polling interval in seconds (min: 10) |
-| `cursorStatusline.monthlyBudget` | `500` | Monthly budget in USD for % calculation |
+| `cursorStatusline.monthlyBudget` | `1000` | Monthly budget in USD for % calculation |
 
 > **Usage % calculation:** When a request limit is available, the progress bar is based on `requests / limit`. If no limit is set, it falls back to `total cost / monthlyBudget`.
 

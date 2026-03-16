@@ -11,7 +11,7 @@ export function getConfig(): UsageWatcherConfig {
   const cfg = vscode.workspace.getConfiguration(SECTION);
   return {
     refreshInterval: Math.max(10, cfg.get<number>('refreshInterval', 60)),
-    monthlyBudget: cfg.get<number>('monthlyBudget', 500),
+    monthlyBudget: cfg.get<number>('monthlyBudget', 1000),
   };
 }
 

@@ -26,7 +26,7 @@
         },
         "cursorStatusline.monthlyBudget": {
           "type": "number",
-          "default": 500,
+          "default": 1000,
           "description": "Monthly usage budget in USD for progress bar calculation"
         }
       }
