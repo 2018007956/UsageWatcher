@@ -31,14 +31,32 @@ npm run compile
 
 Press **F5** in VS Code / Cursor to launch the Extension Development Host.
 
-### 4. Configure extension settings (optional)
+### 4. Install locally in Cursor for personal use
+
+If you want the extension to load automatically whenever you open Cursor, package it as a local VSIX and install it once:
+
+```bash
+npm install
+npm run compile
+npx @vscode/vsce package
+```
+
+Then in Cursor:
+
+- Open the Command Palette with `Cmd + Shift + P`
+- Run `Extensions: Install from VSIX...`
+- Select the generated `.vsix` file (for example, `usagewatcher-0.2.0.vsix`)
+
+After installation, Cursor will load the extension automatically on startup.
+
+### 5. Configure extension settings (optional)
 
 Add these values to `settings.json` if you want to customize behavior:
 
 ```json
 {
   "cursorStatusline.refreshInterval": 60,
-  "cursorStatusline.monthlyBudget": 500
+  "cursorStatusline.monthlyBudget": 1000
 }
 ```
 
